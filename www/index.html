@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catch The Ball</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HOME SCREEN
+    ========================== -->
+
+    <div id="startScreen">
+
+        <div class="game-logo">🎮</div>
+
+        <h1>Catch The Ball</h1>
+
+        <p>
+            Catch the falling objects,
+            build your combo and get the highest score!
+        </p>
+
+        <div class="best-score">
+            👑 Best Score:
+            <span id="menuHighScore">0</span>
+        </div>
+
+        <h3>Select Difficulty</h3>
+
+        <div class="difficulty-buttons">
+
+            <button id="easyButton" class="difficulty active">
+                🟢 EASY
+            </button>
+
+            <button id="mediumButton" class="difficulty">
+                🟡 MEDIUM
+            </button>
+
+            <button id="hardButton" class="difficulty">
+                🔴 HARD
+            </button>
+
+        </div>
+
+        <div class="instructions">
+
+            <p>⬅️ ➡️ Move Basket</p>
+            <p>🔴 Catch Ball</p>
+            <p>🪙 Collect Coins</p>
+            <p>🌟 Golden = +5</p>
+            <p>💎 Diamond = +10</p>
+            <p>⚡ Lightning = 2×</p>
+            <p>💣 Bomb = -1 Life</p>
+            <p>🔥 Build Combo</p>
+
+        </div>
+
+        <button id="startButton">
+            🚀 START GAME
+        </button>
+
+        <div class="menu-buttons">
+
+            <button id="howToPlayButton" class="menu-button">
+                📖 HOW TO PLAY
+            </button>
+
+            <button id="settingsButton" class="menu-button">
+                ⚙️ SETTINGS
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         HOW TO PLAY
+    ========================== -->
+
+    <div id="howToPlayScreen">
+
+        <div class="menu-card">
+
+            <h1>📖 How To Play</h1>
+
+            <div class="how-item">
+                <span>🧺</span>
+                <p>Move the basket using <b>⬅️ ➡️</b>.</p>
+            </div>
+
+            <div class="how-item">
+                <span>🔴</span>
+                <p>Catch the normal ball to earn points.</p>
+            </div>
+
+            <div class="how-item">
+                <span>🪙</span>
+                <p>Collect coins to increase your coin count.</p>
+            </div>
+
+            <div class="how-item">
+                <span>🌟</span>
+                <p>Golden Ball gives <b>+5 points.</b></p>
+            </div>
+
+            <div class="how-item">
+                <span>💎</span>
+                <p>Diamond gives <b>+10 points + 3 coins.</b></p>
+            </div>
+
+            <div class="how-item">
+                <span>⚡</span>
+                <p>Lightning gives <b>2× score</b> temporarily.</p>
+            </div>
+
+            <div class="how-item">
+                <span>💣</span>
+                <p>Avoid bombs! They remove <b>1 life.</b></p>
+            </div>
+
+            <div class="how-item">
+                <span>🛡️</span>
+                <p>Shield protects you from one bomb.</p>
+            </div>
+
+            <div class="how-item">
+                <span>🔥</span>
+                <p>Build combos to increase your multiplier.</p>
+            </div>
+
+            <button id="closeHowToPlay">
+                ← BACK
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SETTINGS
+    ========================== -->
+
+    <div id="settingsScreen">
+
+        <div class="menu-card">
+
+            <h1>⚙️ Settings</h1>
+
+            <div class="setting-row">
+
+                <span>🔊 Sound</span>
+
+                <button id="settingsSoundButton">
+                    ON
+                </button>
+
+            </div>
+
+            <div class="setting-row">
+
+                <span>📳 Vibration</span>
+
+                <button id="vibrationButton">
+                    ON
+                </button>
+
+            </div>
+
+            <div class="setting-row">
+
+                <span>🗑️ High Score</span>
+
+                <button id="resetScoreButton">
+                    RESET
+                </button>
+
+            </div>
+
+            <button id="closeSettings">
+                ← BACK
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         GAME SCREEN
+    ========================== -->
+
+    <div id="gameScreen">
+
+        <!-- TOP BAR -->
+
+        <div class="top-bar">
+
+            <div class="score-box">
+                🏆
+                <span id="score">0</span>
+            </div>
+
+            <div class="coin-box">
+                🪙
+                <span id="coins">0</span>
+            </div>
+
+            <div class="high-score-box">
+                👑
+                <span id="highScore">0</span>
+            </div>
+
+            <div class="level-box">
+                ⚡
+                <span id="level">1</span>
+            </div>
+
+            <div class="lives-box">
+                ❤️
+                <span id="lives">3</span>
+            </div>
+
+            <div class="timer-box">
+                ⏱️
+                <span id="timer">60</span>
+            </div>
+
+            <button id="soundButton">
+                🔊
+            </button>
+
+            <button id="pauseButton">
+                ⏸️
+            </button>
+
+        </div>
+
+
+        <!-- COMBO -->
+
+        <div id="comboDisplay">
+
+            🔥 COMBO x
+            <span id="combo">0</span>
+
+        </div>
+
+
+        <!-- POWER STATUS -->
+
+        <div id="powerStatus">
+
+            <span id="powerIcon"></span>
+
+            <span id="powerText"></span>
+
+        </div>
+
+
+        <!-- =========================
+             COUNTDOWN
+        ========================== -->
+
+        <div id="countdownScreen">
+
+            <div id="countdownNumber">
+                3
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             GAME AREA
+        ========================== -->
+
+        <div id="gameArea">
+
+            <div id="ball"></div>
+
+            <div id="coin">🪙</div>
+
+            <div id="goldenBall">🌟</div>
+
+            <div id="powerUp"></div>
+
+            <div id="bomb">💣</div>
+
+            <div id="diamond">💎</div>
+
+            <div id="lightning">⚡</div>
+
+            <div id="basket"></div>
+
+            <div id="catchMessage"></div>
+
+        </div>
+
+
+        <!-- MOBILE CONTROLS -->
+
+        <div class="mobile-controls">
+
+            <button id="leftButton">
+                ⬅️
+            </button>
+
+            <button id="rightButton">
+                ➡️
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PAUSE SCREEN
+    ========================== -->
+
+    <div id="pauseScreen">
+
+        <div class="menu-card">
+
+            <div class="pause-icon">
+                ⏸️
+            </div>
+
+            <h1>GAME PAUSED</h1>
+
+            <button id="resumeButton">
+                ▶️ RESUME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         GAME OVER
+    ========================== -->
+
+    <div id="gameOverScreen">
+
+        <div class="menu-card">
+
+            <div class="game-over-icon">
+                💥
+            </div>
+
+            <h1>GAME OVER</h1>
+
+            <p>Your Score</p>
+
+            <div class="final-score">
+
+                <span id="finalScore">
+                    0
+                </span>
+
+            </div>
+
+            <p>
+                🪙 Coins:
+                <span id="finalCoins">0</span>
+            </p>
+
+            <p>
+                ⚡ Level:
+                <span id="finalLevel">1</span>
+            </p>
+
+            <p>
+                🔥 Max Combo:
+                <span id="finalCombo">0</span>
+            </p>
+
+            <button id="restartButton">
+                🔄 PLAY AGAIN
+            </button>
+
+            <button id="menuButton">
+                🏠 MAIN MENU
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

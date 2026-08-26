@@ -1,0 +1,886 @@
+/* =====================================================
+   CATCH THE BALL - COMPLETE GAME CSS
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+    color: white;
+    overflow: hidden;
+}
+
+/* =====================================================
+   COMMON
+===================================================== */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* =====================================================
+   START SCREEN
+===================================================== */
+
+#startScreen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.game-logo {
+    font-size: 70px;
+    margin-bottom: 5px;
+    animation: floatLogo 2s ease-in-out infinite;
+}
+
+#startScreen h1 {
+    font-size: clamp(38px, 7vw, 68px);
+    margin-bottom: 12px;
+    background: linear-gradient(90deg, #60a5fa, #c084fc, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+#startScreen > p {
+    max-width: 600px;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+}
+
+.best-score {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 10px 22px;
+    border-radius: 30px;
+    margin-bottom: 22px;
+}
+
+#menuHighScore {
+    color: #facc15;
+    font-weight: bold;
+}
+
+#startScreen h3 {
+    margin-bottom: 12px;
+}
+
+/* =====================================================
+   DIFFICULTY
+===================================================== */
+
+.difficulty-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.difficulty {
+    padding: 11px 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-weight: bold;
+}
+
+.difficulty.active {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+
+/* =====================================================
+   INSTRUCTIONS
+===================================================== */
+
+.instructions {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 8px 14px;
+    margin-bottom: 25px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.instructions p {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 7px 10px;
+    border-radius: 8px;
+}
+
+/* =====================================================
+   START BUTTON
+===================================================== */
+
+#startButton {
+    padding: 15px 40px;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #2563eb, #9333ea);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
+    margin-bottom: 18px;
+}
+
+#startButton:hover {
+    box-shadow: 0 10px 35px rgba(147, 51, 234, 0.55);
+}
+
+/* =====================================================
+   MENU BUTTONS
+===================================================== */
+
+.menu-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.menu-button {
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* =====================================================
+   GAME SCREEN
+===================================================== */
+
+#gameScreen {
+    display: none;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.top-bar {
+    height: 65px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 15px;
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 20;
+}
+
+.score-box,
+.coin-box,
+.high-score-box,
+.level-box,
+.lives-box,
+.timer-box {
+    min-width: 72px;
+    padding: 8px 11px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    text-align: center;
+    font-weight: bold;
+}
+
+.score-box span {
+    color: #60a5fa;
+}
+
+.coin-box span {
+    color: #facc15;
+}
+
+.high-score-box span {
+    color: #fbbf24;
+}
+
+.level-box span {
+    color: #a78bfa;
+}
+
+.lives-box span {
+    color: #fb7185;
+}
+
+.timer-box span {
+    color: #34d399;
+}
+
+#soundButton,
+#pauseButton {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 18px;
+}
+
+/* =====================================================
+   COMBO
+===================================================== */
+
+#comboDisplay {
+    position: absolute;
+    top: 78px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(248, 113, 113, 0.3);
+    font-weight: bold;
+    color: #fca5a5;
+}
+
+#comboDisplay.combo-hot {
+    animation: comboPulse 0.5s infinite alternate;
+    color: #fbbf24;
+    background: rgba(245, 158, 11, 0.15);
+}
+
+/* =====================================================
+   POWER STATUS
+===================================================== */
+
+#powerStatus {
+    position: absolute;
+    top: 118px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+    padding: 7px 15px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.18);
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* =====================================================
+   GAME AREA
+===================================================== */
+
+#gameArea {
+    position: relative;
+    width: 500px;
+    height: 600px;
+    max-width: calc(100vw - 20px);
+    margin: 70px auto 0;
+    overflow: hidden;
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.2), transparent 35%),
+        linear-gradient(180deg, #172554, #0f172a);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 40px rgba(59, 130, 246, 0.08);
+}
+
+/* stars / background effect */
+
+#gameArea::before {
+    content: "✦   ·      ✧        ·   ✦     ·       ✧";
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 20px;
+    letter-spacing: 25px;
+    pointer-events: none;
+}
+
+/* =====================================================
+   BALL
+===================================================== */
+
+#ball {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 25%, #fca5a5, #ef4444 45%, #991b1b);
+    box-shadow:
+        0 0 12px rgba(239, 68, 68, 0.8),
+        inset -5px -5px 8px rgba(0, 0, 0, 0.25);
+    z-index: 5;
+}
+
+/* =====================================================
+   BASKET
+===================================================== */
+
+#basket {
+    position: absolute;
+    bottom: 18px;
+    left: 195px;
+    width: 110px;
+    height: 45px;
+    border-radius: 8px 8px 25px 25px;
+    background: linear-gradient(180deg, #f59e0b, #b45309);
+    border: 4px solid #fbbf24;
+    box-shadow:
+        0 5px 15px rgba(245, 158, 11, 0.45),
+        inset 0 5px 5px rgba(255, 255, 255, 0.2);
+    z-index: 10;
+}
+
+#basket::before {
+    content: "";
+    position: absolute;
+    width: 76px;
+    height: 10px;
+    left: 13px;
+    top: -9px;
+    border-radius: 50%;
+    border: 4px solid #fbbf24;
+    background: rgba(120, 53, 15, 0.7);
+}
+
+/* =====================================================
+   FALLING OBJECTS
+===================================================== */
+
+#coin,
+#goldenBall,
+#powerUp,
+#bomb,
+#diamond,
+#lightning {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    z-index: 6;
+    user-select: none;
+}
+
+/* Coin */
+
+#coin {
+    display: flex;
+    animation: spinObject 1.2s linear infinite;
+}
+
+/* Golden */
+
+#goldenBall {
+    filter: drop-shadow(0 0 12px #facc15);
+    animation: goldenGlow 0.7s infinite alternate;
+}
+
+/* Power */
+
+#powerUp {
+    border-radius: 50%;
+    animation: powerGlow 0.8s infinite alternate;
+}
+
+/* Bomb */
+
+#bomb {
+    filter: drop-shadow(0 0 10px #ef4444);
+}
+
+/* Diamond */
+
+#diamond {
+    filter: drop-shadow(0 0 14px #60a5fa);
+    animation: diamondGlow 0.7s infinite alternate;
+}
+
+/* Lightning */
+
+#lightning {
+    filter: drop-shadow(0 0 15px #facc15);
+    animation: lightningGlow 0.4s infinite alternate;
+}
+
+/* =====================================================
+   CATCH MESSAGE
+===================================================== */
+
+#catchMessage {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    font-size: 25px;
+    font-weight: bold;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+}
+
+.catch-animation {
+    animation: messagePop 0.8s ease-out forwards;
+}
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+#countdownScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(2, 6, 23, 0.82);
+    backdrop-filter: blur(6px);
+}
+
+#countdownNumber {
+    font-size: clamp(70px, 15vw, 150px);
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 35px #818cf8;
+    animation: countdownPop 1s ease;
+}
+
+/* =====================================================
+   MOBILE CONTROLS
+===================================================== */
+
+.mobile-controls {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.mobile-controls button {
+    width: 75px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobile-controls button:hover {
+    background: rgba(99, 102, 241, 0.35);
+}
+
+/* =====================================================
+   MENU / PAUSE / GAME OVER SCREENS
+===================================================== */
+
+#howToPlayScreen,
+#settingsScreen,
+#pauseScreen,
+#gameOverScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(2, 6, 23, 0.88);
+    backdrop-filter: blur(8px);
+}
+
+.menu-card {
+    width: min(480px, 92vw);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #1e293b, #111827);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
+    text-align: center;
+}
+
+.menu-card h1 {
+    margin-bottom: 25px;
+    font-size: 32px;
+}
+
+/* =====================================================
+   HOW TO PLAY
+===================================================== */
+
+.how-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.how-item span {
+    font-size: 27px;
+    min-width: 40px;
+}
+
+.how-item p {
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+
+#closeHowToPlay,
+#closeSettings,
+#resumeButton,
+#restartButton,
+#menuButton {
+    padding: 12px 22px;
+    border-radius: 12px;
+    color: white;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+#closeHowToPlay,
+#closeSettings {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#resumeButton {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+#restartButton {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+#menuButton {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.setting-row span {
+    font-weight: bold;
+}
+
+.setting-row button {
+    min-width: 65px;
+    padding: 8px 12px;
+    border-radius: 9px;
+    background: #334155;
+    color: white;
+    font-weight: bold;
+}
+
+#resetScoreButton {
+    background: #991b1b;
+}
+
+/* =====================================================
+   PAUSE
+===================================================== */
+
+.pause-icon {
+    font-size: 70px;
+    margin-bottom: 10px;
+    animation: floatLogo 1.5s infinite;
+}
+
+#pauseScreen h1 {
+    color: #facc15;
+}
+
+/* =====================================================
+   GAME OVER
+===================================================== */
+
+.game-over-icon {
+    font-size: 70px;
+    margin-bottom: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+
+#gameOverScreen h1 {
+    color: #f87171;
+}
+
+.final-score {
+    font-size: 65px;
+    font-weight: bold;
+    color: #60a5fa;
+    margin: 8px 0 15px;
+    text-shadow: 0 0 25px rgba(96, 165, 250, 0.5);
+}
+
+#gameOverScreen p {
+    color: #cbd5e1;
+    margin: 8px 0;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes floatLogo {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes comboPulse {
+    from {
+        transform: translateX(-50%) scale(1);
+    }
+
+    to {
+        transform: translateX(-50%) scale(1.08);
+    }
+}
+
+@keyframes spinObject {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes goldenGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes powerGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+@keyframes diamondGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2) rotate(5deg);
+    }
+}
+
+@keyframes lightningGlow {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes messagePop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -80%) scale(1);
+    }
+}
+
+@keyframes countdownPop {
+    0% {
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+    .top-bar {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 8px;
+        gap: 6px;
+    }
+
+    .score-box,
+    .coin-box,
+    .high-score-box,
+    .level-box,
+    .lives-box,
+    .timer-box {
+        min-width: 60px;
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    #soundButton,
+    #pauseButton {
+        width: 38px;
+        height: 38px;
+    }
+
+    #gameArea {
+        width: min(500px, calc(100vw - 20px));
+        height: min(600px, calc(100vh - 190px));
+        min-height: 480px;
+        margin-top: 65px;
+    }
+
+    #startScreen {
+        justify-content: flex-start;
+        padding-top: 35px;
+    }
+
+    .game-logo {
+        font-size: 55px;
+    }
+
+    #startScreen h1 {
+        font-size: 42px;
+    }
+
+    .instructions {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .menu-buttons {
+        flex-direction: column;
+    }
+
+    .menu-card {
+        padding: 25px 20px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .top-bar {
+        gap: 4px;
+    }
+
+    .score-box,
+    .coin-box,
+    .high-score-box,
+    .level-box,
+    .lives-box,
+    .timer-box {
+        min-width: 50px;
+        font-size: 11px;
+    }
+
+    #gameArea {
+        min-height: 450px;
+    }
+
+    .mobile-controls button {
+        width: 85px;
+        height: 50px;
+    }
+
+    #comboDisplay {
+        top: 105px;
+    }
+
+    #powerStatus {
+        top: 145px;
+    }
+}
